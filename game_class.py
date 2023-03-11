@@ -18,6 +18,9 @@ class game:
         self.FPS = FPS
         pygame.init()
 
+        self.trigger_list = []
+        self.render_list = []
+
         self.__SURFACE__ = pygame.display.set_mode(size=(X, Y),flags=0,depth=64)
         pygame.display.set_caption(description)
 
@@ -26,7 +29,7 @@ class game:
 
         pygame.key.set_repeat(1,100)
     
-    def fps_render(self,render_list=[]):
+    def fps_render(self):
         pygame.display.update()
         self.__clock__.tick(self.FPS)
     
@@ -35,6 +38,11 @@ class game:
             if event.type == QUIT: # vypínání hry
                 pygame.quit()
                 sys.exit()
+        
+        key_pressed = pygame.key.get_pressed()
+        for i in self.trigger_list:
+            i.interaction(key=key_pressed)
+
     
     def game_loop(self):
         while (self.game_status == gameStatus.ONLINE):
