@@ -1,11 +1,14 @@
 import game_class
 from pygame.locals import *
 import pygame
+import error_messages
 
 # the basic Object class, every object inherits from this
 class Object:
-    def __init__(self, texture="default.png", level="level0.lvl", x=0,y=0,size_x=16,size_y=16,layer=0, game = None):
+    def __init__(self, texture="default.png",animated = False, level="level0.lvl", x=0,y=0,size_x=16,size_y=16,layer=0, game = None):
+        print(game)
         self.__texture__ = pygame.image.load("textures/" + texture)
+        self.animated_texture = animated
         self._level = level
         self._x = x
         self._y = y
@@ -13,11 +16,20 @@ class Object:
         self._ySize = size_y
         self.layer = 0
         self.current_game = game
+        self.current_frame = 0
+        self.max_frame = 8
+        self.frame_lenght = 10
         self.render()
         self.unrender()
 
-    def change_texture(self, new_texture="default.png"):
+    def change_texture(self, new_texture="default.png",animated = False, max_frame = 8, frame_lenght = 10):
         self.__texture__ = pygame.image.load("textures/" + new_texture)
+        self.animated_texture = animated
+        self.max_frame = max_frame
+        if (frame_lenght > 0):
+            self.frame_lenght = frame_lenght
+        else:
+            error_messages.animation_short_frame(self)
 
     def relative_pos_change(self, x_change=0, y_change=0):
         self._x += x_change
@@ -36,6 +48,27 @@ class Object:
     
     def unrender(self):
         self.current_game.unrender_list.append(self)
+
+    
+    def texture(self):
+        if not self.animated_texture:
+            return self.__texture__
+        else:
+            try:
+                self.animate()
+                frame_width = self.__texture__.get_width()
+                frame_height = self.__texture__.get_height()/self.max_frame
+                return self.__texture__.subsurface(pygame.Rect(0,frame_height*(self.current_frame//self.frame_lenght),frame_width,frame_height))
+            except:
+                error_messages.animation_max_frame_exceded(self)
+                return self.__texture__
+        
+    def animate(self):
+        if (self.current_frame+1 == self.max_frame*self.frame_lenght):
+            self.current_frame = 0
+        else:
+            self.current_frame+=1
+
 
 
 

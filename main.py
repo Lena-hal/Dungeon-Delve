@@ -4,7 +4,7 @@ import player_object
 import trigger_object
 
 def start_game(game):
-    player_object.player(game=game)
+    player_object.player(game=game,texture="default_animated.png",animated=True)
 
 
 if __name__ == "__main__":
