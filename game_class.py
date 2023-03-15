@@ -43,7 +43,7 @@ class game:
 
         for i in self.render_list:
             # TODO add the layer mechanic
-            self.__SURFACE__.blit(i.texture(), (i._x,i._y))
+            self.__SURFACE__.blit(i.texture.get_texture(), (i._x,i._y))
 
         pygame.display.update()
         self.__clock__.tick(self.FPS)
