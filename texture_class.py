@@ -1,14 +1,44 @@
 import pygame
 import error_messages
+import json
 
-# this class is used for all things with it's own texture (player, trigger...)
+# this class is used to manage all the texture requests, preventing extra texture loading
+class Texture_manager:
+    __instance = None
+
+    def __init__(self):
+        with open("textures/texture_index.json", "r") as index:
+            self.texture_data = json.load(index)
+            for i, j in self.texture_data.items():
+                j["pointer"] = None
+
+    def __new__(cls):
+        if cls.__instance is None:
+            cls.__instance = super().__new__(cls)
+        return cls.__instance
+    
+    def get_texture(self, texture_path):
+        if texture_path in self.texture_data:
+            if self.texture_data[texture_path]["pointer"] == None:
+                self.texture_data[texture_path]["pointer"] = Texture(texture_path,self)
+                return self.texture_data[texture_path]["pointer"]
+            else:
+                return self.texture_data[texture_path]["pointer"]
+        else:
+            error_messages.texture_manager_invalid_path(texture_path)
+
+# this class is used for storing textures
 class Texture:
-    def __init__(self, texture, animated, ):
-        self.current_frame = 0
-        self.max_frame = 8
-        self.frame_lenght = 10
+    def __init__(self, texture, manager):
+        self.path = texture
+        self.animated_texture = manager.texture_data[self.path]["Animated"]
+        if self.animated_texture:
+            self.current_frame = 0
+            self.max_frame = manager.texture_data[self.path]["Frames"]
+            self.frame_lenght = manager.texture_data[self.path]["Default_Frame_Rate"]
+            
         self.__texture__ = pygame.image.load("textures/" + texture)
-        self.animated_texture = animated
+        
     
     # returns the canvas object used usually to render the object
     def get_texture(self):
@@ -31,26 +61,4 @@ class Texture:
         else:
             self.current_frame+=1
 
-    # used to change the texture 
-    def change_texture(self, new_texture="default.png",animated = False, max_frame = None, frame_lenght = 10):
-        self.__texture__ = pygame.image.load("textures/" + new_texture)
-        self.animated_texture = animated
 
-        # if the lenght of animation is not set, it tries to find the lenght based on the height of the texture
-        if (max_frame == None):
-            self.max_frame = self.get_animation_lenght()
-        elif (max_frame > 0):
-            self.max_frame = max_frame
-        else:
-            error_messages.animation_too_small_max_frame(self)
-
-        if (frame_lenght > 0):
-            self.frame_lenght = frame_lenght
-        else:
-            error_messages.animation_short_frame(self)
-
-    # returns the lenght of the animation based on the height of the texture
-    def get_animation_lenght(self):
-        texture_width= self.__texture__.get_width()
-        texture_height = self.__texture__.get_height()
-        return texture_height//texture_width

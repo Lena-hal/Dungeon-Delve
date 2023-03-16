@@ -6,8 +6,8 @@ import texture_class
 
 # the basic Object class, every object inherits from this
 class Object:
-    def __init__(self, texture="default.png",animated = False, level="level0.lvl", x=0,y=0,size_x=16,size_y=16,layer=0, game = None):
-        self.texture = texture_class.Texture(texture,animated)
+    def __init__(self, texture="default.png", level="level0.lvl", x=0,y=0,size_x=16,size_y=16,layer=0, game = None):
+        self.texture = game.manager.get_texture(texture)
         self._level = level
         self._x = x
         self._y = y

@@ -5,8 +5,8 @@ import math
 sqrt2 = math.sqrt(2) # this is for optimalisation (many calculations prevented by precalculating)
 
 class player(Object):
-    def __init__(self, texture="default.png",animated = False, level="level0.lvl", x=0, y=0, size_x=16, size_y=16, layer=0, game = None):
-        super().__init__(texture,animated, level, x, y, size_x, size_y, layer, game)
+    def __init__(self, texture="default.png", level="level0.lvl", x=0, y=0, size_x=16, size_y=16, layer=0, game = None):
+        super().__init__(texture, level, x, y, size_x, size_y, layer, game)
         self.current_game.trigger_list.append(self)
         self.current_game.local_player = self
         self.speed = 5
