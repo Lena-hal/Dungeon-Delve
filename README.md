@@ -1,5 +1,6 @@
 <img alt="red" src="https://img.shields.io/badge/-This game is in early stage of development, right now it has almost no features finished-red">
-#  Dungeon Delve
+
+# Dungeon Delve
 
 This project is a remake of my older game created in Pygame. The goal of the game is to navigate through the dungeon, survive, defeat bosses, solve puzzles, and do it all in the fastest time possible. The project was created as part of a Python seminar for high schoolers at MUNI.
 
