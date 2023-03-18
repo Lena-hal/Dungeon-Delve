@@ -10,7 +10,9 @@ Before running the game, the following packages need to be installed:
 
 - Pygame
 - Python 3.x
+- Pygame-gui
 
+or you can install simply all the packages using `pip install -r requirements.txt`
 Then, simply run the main.py file.
 ## How to Play
 
@@ -26,4 +28,7 @@ The goal of the game is to navigate through the dungeon, survive, defeat bosses,
 - Improved artificial intelligence of enemy characters - improve the behavior and reactions of enemy characters for greater challenge.
 - Improved graphics - add more details and improve the overall visual experience.
 
+## Credits
 
+- Code was created by [Lena-hal](https://github.com/Lena-hal)
+- Tilemaps used in this project were created by [0x72](https://0x72.itch.io/)

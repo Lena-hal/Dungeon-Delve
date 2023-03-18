@@ -1,0 +1,11 @@
+{
+    "Metadata": [
+        "Walls contain array for every wall, with the format [X,Y,Width,Height]"
+    ],
+    "Data": {
+        "Walls": [
+            [100,100,50,50],
+            []
+        ]
+    }
+}
