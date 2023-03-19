@@ -4,5 +4,6 @@ class Wall(game_object.Object):
         self.layer = 0
         texture = self.generate_texture()
         super().__init__(texture, level, x, y, width, height, self.layer, game)
+        
     def generate_texture():
         pass
