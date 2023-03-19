@@ -3,6 +3,7 @@ import game_object
 import player_object
 import trigger_object
 import texture_class
+import gui
 
 def start_game(game):
     player_object.player(game=game,texture="default/default_animated.png")
@@ -10,6 +11,8 @@ def start_game(game):
 
 if __name__ == "__main__":
     
+    
     game = game_class.game()
     start_game(game)
+    gui.MainMenu(game)
     game.game_loop()

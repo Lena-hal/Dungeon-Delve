@@ -3,5 +3,7 @@
     "default/default_animated.png": {"Animated": true, "Frames": 8, "Default_Frame_Rate": 20, "Interpolated": false},
     "default/default_bg.png": {"Animated": false},
     "trigger/trigger.png": {"Animated": false},
-    "trigger/trigger_debug.png": {"Animated": false}
+    "trigger/trigger_debug.png": {"Animated": false},
+    "gui/logo.png": {"Animated": false}
+
 }
