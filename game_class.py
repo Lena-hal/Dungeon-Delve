@@ -34,7 +34,7 @@ class game:
         self.gui_render_list = []
 
         self.__SURFACE__ = pygame.display.set_mode(size=(self.window_width, self.window_height),flags=0,depth=64)
-        self.__SURFACE__.blit(self.__texture__.get_texture(), (0,0))
+        self.reload_background()
         pygame.display.set_caption(description)
 
         self.__clock__ = pygame.time.Clock()
@@ -44,6 +44,9 @@ class game:
 
         pygame.key.set_repeat(1,100)
     
+    def reload_background(self):
+        self.__SURFACE__.blit(self.__texture__.get_texture(), (0,0))
+
     def fps_render(self):
         if self.game_status == gameStatus.ONLINE:
             for i in self.unrender_list:
