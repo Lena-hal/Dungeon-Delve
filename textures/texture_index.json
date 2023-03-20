@@ -1,9 +1,161 @@
 {
-    "default/default.png": {"Animated": false},
-    "default/default_animated.png": {"Animated": true, "Frames": 8, "Default_Frame_Rate": 20, "Interpolated": false},
-    "default/default_bg.png": {"Animated": false},
-    "trigger/trigger.png": {"Animated": false},
-    "trigger/trigger_debug.png": {"Animated": false},
-    "gui/logo.png": {"Animated": false}
-
+    "backgrounds/level0.png": {
+        "Animated": false
+    },
+    "default/default.png": {
+        "Animated": false
+    },
+    "default/default_animated.png": {
+        "Animated": true,
+        "Frames": 8,
+        "Default_Frame_Rate": 20,
+        "Interpolated": false
+    },
+    "default/default_bg.png": {
+        "Animated": false
+    },
+    "gui/logo.png": {
+        "Animated": false
+    },
+    "trigger/trigger.png": {
+        "Animated": false
+    },
+    "trigger/trigger_debug.png": {
+        "Animated": false
+    },
+    "walls/doors_all.png": {
+        "Animated": false
+    },
+    "walls/doors_frame_left.png": {
+        "Animated": false
+    },
+    "walls/doors_frame_righ.png": {
+        "Animated": false
+    },
+    "walls/doors_frame_top.png": {
+        "Animated": false
+    },
+    "walls/doors_leaf_closed.png": {
+        "Animated": false
+    },
+    "walls/doors_leaf_open.png": {
+        "Animated": false
+    },
+    "walls/floor_1.png": {
+        "Animated": false
+    },
+    "walls/floor_2.png": {
+        "Animated": false
+    },
+    "walls/floor_3.png": {
+        "Animated": false
+    },
+    "walls/floor_4.png": {
+        "Animated": false
+    },
+    "walls/floor_5.png": {
+        "Animated": false
+    },
+    "walls/floor_6.png": {
+        "Animated": false
+    },
+    "walls/floor_7.png": {
+        "Animated": false
+    },
+    "walls/floor_8.png": {
+        "Animated": false
+    },
+    "walls/floor_ladder.png": {
+        "Animated": false
+    },
+    "walls/wall_corner_bottom_left.png": {
+        "Animated": false
+    },
+    "walls/wall_corner_bottom_right.png": {
+        "Animated": false
+    },
+    "walls/wall_corner_front_left.png": {
+        "Animated": false
+    },
+    "walls/wall_corner_front_right.png": {
+        "Animated": false
+    },
+    "walls/wall_corner_left.png": {
+        "Animated": false
+    },
+    "walls/wall_corner_right.png": {
+        "Animated": false
+    },
+    "walls/wall_corner_top_left.png": {
+        "Animated": false
+    },
+    "walls/wall_corner_top_right.png": {
+        "Animated": false
+    },
+    "walls/wall_fountain_top.png": {
+        "Animated": false
+    },
+    "walls/wall_hole_1.png": {
+        "Animated": false
+    },
+    "walls/wall_hole_2.png": {
+        "Animated": false
+    },
+    "walls/wall_inner_corner_l_top_left.png": {
+        "Animated": false
+    },
+    "walls/wall_inner_corner_l_top_rigth.png": {
+        "Animated": false
+    },
+    "walls/wall_inner_corner_mid_left.png": {
+        "Animated": false
+    },
+    "walls/wall_inner_corner_mid_rigth.png": {
+        "Animated": false
+    },
+    "walls/wall_inner_corner_t_top_left.png": {
+        "Animated": false
+    },
+    "walls/wall_inner_corner_t_top_rigth.png": {
+        "Animated": false
+    },
+    "walls/wall_left.png": {
+        "Animated": false
+    },
+    "walls/wall_mid.png": {
+        "Animated": false
+    },
+    "walls/wall_right.png": {
+        "Animated": false
+    },
+    "walls/wall_side_front_left.png": {
+        "Animated": false
+    },
+    "walls/wall_side_front_right.png": {
+        "Animated": false
+    },
+    "walls/wall_side_mid_left.png": {
+        "Animated": false
+    },
+    "walls/wall_side_mid_right.png": {
+        "Animated": false
+    },
+    "walls/wall_side_top_left.png": {
+        "Animated": false
+    },
+    "walls/wall_side_top_right.png": {
+        "Animated": false
+    },
+    "walls/wall_tileset.png": {
+        "Animated": false
+    },
+    "walls/wall_top_left.png": {
+        "Animated": false
+    },
+    "walls/wall_top_mid.png": {
+        "Animated": false
+    },
+    "walls/wall_top_right.png": {
+        "Animated": false
+    }
 }
