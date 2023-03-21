@@ -1,5 +1,6 @@
 import texture_class
 import json
+import wall_class
 class Level:
     def __init__(self,level_path,game) -> None:
         self.game = game
