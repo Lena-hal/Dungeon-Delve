@@ -1,12 +1,12 @@
 {
     "Metadata": [
-        "Walls contain array for every wall, with the format [X,Y,Width,Height]"
+        "Walls contain array for every wall, with the format [X,Y]"
     ],
     "Data": {
         "Background": "backgrounds/level0.png",
         "Walls": [
-            [100,100,50,50],
-            []
+            [100,100,16,16, "walls/floor_1.png"],
+            [100,116,16,16, "walls/floor_1.png"]
         ]
     }
 }
