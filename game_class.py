@@ -5,6 +5,7 @@ from pygame.locals import *
 import sys
 import texture_class
 import pygame_gui
+import level_class
 
 class gameStatus(Enum):
     # this status sets how the game should act
@@ -25,13 +26,14 @@ class game:
         self.gui_manager = pygame_gui.UIManager((self.window_width, self.window_height), "textures/gui_theme.json")
         self.manager = texture_class.Texture_manager()
 
-        self.__texture__ = self.manager.get_texture("default/default_bg.png") # background texture of current level 
         # TODO: find a better way of implementing background, because this is bad
         self.trigger_list = []
         self.render_list = []
         self.unrender_list = []
         self.gui_list = []
         self.gui_render_list = []
+
+        self.level = level_class.Level("level_data/level1.json",self) # background texture of current level 
 
         self.__SURFACE__ = pygame.display.set_mode(size=(self.window_width, self.window_height),flags=0,depth=64)
         self.reload_background()
@@ -45,13 +47,13 @@ class game:
         pygame.key.set_repeat(1,100)
     
     def reload_background(self):
-        self.__SURFACE__.blit(self.__texture__.get_texture(), (0,0))
+        self.__SURFACE__.blit(self.level.background.texture.get_texture(), (0,0))
 
     def fps_render(self):
         if self.game_status == gameStatus.ONLINE:
             for i in self.unrender_list:
                 # TODO: if optimalization needed add: dynamically change the size of unrendering for each enitity because _xSize*3 is sometimes too big 
-                self.__SURFACE__.blit(self.__texture__.get_texture(), ((i._x-i._xSize),(i._y-i._ySize)), area=((i._x-i._xSize),(i._y-i._ySize),i._xSize*3,i._ySize*3))
+                self.__SURFACE__.blit(self.level.background.texture.get_texture(), ((i._x-i._xSize),(i._y-i._ySize)), area=((i._x-i._xSize),(i._y-i._ySize),i._xSize*3,i._ySize*3))
 
             for i in self.render_list:
                 # TODO add the layer mechanic
