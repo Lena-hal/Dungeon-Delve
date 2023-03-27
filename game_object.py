@@ -13,7 +13,7 @@ class Object:
         self._y = y
         self._xSize = size_x
         self._ySize = size_y
-        self.layer = 0
+        self.layer = layer
         self.current_game = game
         self.render()
         self.unrender()

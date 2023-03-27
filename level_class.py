@@ -9,7 +9,7 @@ class Level:
             self.level_data = json.load(data)
         self.background = Background(self.level_data["Data"]["Background"],self.game)
         for i in self.level_data["Data"]["Walls"]:
-            self.walls.append(wall_class.Wall(i[0],i[1],i[2],i[3],self.game,level_path,i[4]))
+            self.walls.append(wall_class.Wall(i,self.game,level_path))
 
 
 

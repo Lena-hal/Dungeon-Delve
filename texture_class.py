@@ -1,6 +1,7 @@
 import pygame
 import error_messages
 import json
+import enum
 
 # this class is used to manage all the texture requests, preventing extra texture loading
 class Texture_manager:
@@ -61,4 +62,13 @@ class Texture:
         else:
             self.current_frame+=1
 
+class ModifiedTexture(Texture):
+    def __init__(self, texture, manager, modifier_list):
+        modlist = modifier_list
+        super().__init__(texture, manager)
 
+    def modify(self):
+        pass
+
+class Modifiers(enum):
+    SCALE = 1
