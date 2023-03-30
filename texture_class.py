@@ -27,10 +27,17 @@ class Texture_manager:
                 return self.texture_data[texture_path]["pointer"]
         else:
             error_messages.texture_manager_invalid_path(texture_path)
+    
+    def del_texture(self, pointer):
+        keys = [k for k in self.texture_data if self.texture_data[k] == pointer]
+        for k in keys:
+            del self.texture_data[k]
+
 
 # this class is used for storing textures
 class Texture:
     def __init__(self, texture, manager):
+        self.manager = manager
         self.path = texture
         self.animated_texture = manager.texture_data[self.path]["Animated"]
         if self.animated_texture:
@@ -39,6 +46,7 @@ class Texture:
             self.frame_lenght = manager.texture_data[self.path]["Default_Frame_Rate"]
             
         self.__texture__ = pygame.image.load("textures/" + texture)
+        
         
     
     # returns the canvas object used usually to render the object
@@ -64,11 +72,35 @@ class Texture:
 
 class ModifiedTexture(Texture):
     def __init__(self, texture, manager, modifier_list):
-        modlist = modifier_list
+        self.modlist = modifier_list
         super().__init__(texture, manager)
+        self.users = 1
+
+    def __del__(self):
+        self.manager.del_texture(self)
+        
 
     def modify(self):
-        pass
+        for i in self.modlist:
+            i(self.__texture__)
 
-class Modifiers(enum):
-    SCALE = 1
+    def get_texture(self):
+        self.users+=1
+        return super().get_texture()
+    
+    def take_out_trash(self):
+        if self.users == 0:
+            self.__del__()
+        else:
+            self.users = 0
+
+
+
+class Modificate:
+    def scale_by_pixel(texture,new_size):
+        return pygame.transform.scale(texture,new_size)
+    
+    def scale_by_ratio(texture,ratio):
+        width = texture.get_width()*ratio
+        height = texture.get_height()*ratio
+        return pygame.transform.scale(texture,(width,height))
