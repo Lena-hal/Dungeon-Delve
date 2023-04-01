@@ -75,14 +75,10 @@ class ModifiedTexture(Texture):
         self.modlist = modifier_list
         super().__init__(texture, manager)
         self.users = 1
+        self.update_texture_hash()
 
     def __del__(self):
         self.manager.del_texture(self)
-        
-
-    def modify(self):
-        for i in self.modlist:
-            i(self.__texture__)
 
     def get_texture(self):
         self.users+=1
@@ -93,14 +89,18 @@ class ModifiedTexture(Texture):
             self.__del__()
         else:
             self.users = 0
+    def update_texture_hash(self):
+        self.hash = hash(self.__texture__)
 
 
 
 class Modificate:
     def scale_by_pixel(texture,new_size):
-        return pygame.transform.scale(texture,new_size)
+        
+        texture.__texture__ = pygame.transform.scale(texture.__texture__, new_size)
     
     def scale_by_ratio(texture,ratio):
         width = texture.get_width()*ratio
         height = texture.get_height()*ratio
-        return pygame.transform.scale(texture,(width,height))
+        texture.__texture__ = pygame.transform.scale(texture.__texture__,(width,height))
+

@@ -11,7 +11,7 @@
                 "Width": 16,
                 "Height": 16,
                 "Texture": "walls/floor_1.png",
-                "Scale": 1,
+                "Scale": 2,
                 "Layer": 1
             },
             [100,116,16,16, "walls/floor_1.png"]

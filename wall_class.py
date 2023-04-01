@@ -11,6 +11,6 @@ class Wall(game_object.Object):
         height = wall_data["Height"]
         scale = wall_data["Scale"]
         layer = wall_data["Layer"]
-        super().__init__(texture, level, x, y, width, height, layer, game)
+        super().__init__(texture, scale, level, x, y, width, height, layer, game)
     
 
