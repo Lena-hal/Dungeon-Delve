@@ -1,8 +1,4 @@
-import game_class
 from pygame.locals import *
-import pygame
-import error_messages
-import texture_class
 
 # the basic Object class, every object inherits from this
 class Object:

@@ -19,26 +19,40 @@ class Texture_manager:
         return cls.__instance
     
     def get_texture(self, texture_path):
-        if texture_path in self.texture_data:
-            if self.texture_data[texture_path]["pointer"] == None:
-                self.texture_data[texture_path]["pointer"] = Texture(texture_path,self)
-                return self.texture_data[texture_path]["pointer"]
+        # object can request two types of textures: 
+            # original texture - just the path (textures/texture_path.png)
+            # modified texture - the path and after ":" list of modificators in the form {modificator_name: (inputs), ...} (textures/texture_path.png:{modificator_name:inputs,modificator_name:inputs})
+            # user can enter more then 1 argument for 1 modfier so Scale:(1.5,3.4) is valid argument
+        mod_string = ""
+        mod_dict = {}
+        original_path = texture_path
+        if ":" in texture_path:
+            texture_path, mod_string = texture_path.split(":", 1)
+            mod_string = mod_string.replace("{", "").replace("}", "")
+            mods = mod_string.split(",")
+            for mod in mods:
+                mod_name, mod_values = mod.split(":")
+                mod_values = mod_values.replace("(", "").replace(")", "").split(";")
+                mod_dict[mod_name] = mod_values
+
+            if texture_path in self.texture_data:
+                self.texture_data[original_path] = self.texture_data[texture_path].copy()
             else:
-                return self.texture_data[texture_path]["pointer"]
+                error_messages.texture_manager_invalid_path(texture_path)
+
+        if self.texture_data[original_path]["pointer"] == None:
+            self.texture_data[original_path]["pointer"] = Texture(texture_path,original_path,mod_dict,self)
+            return self.texture_data[original_path]["pointer"]
         else:
-            error_messages.texture_manager_invalid_path(texture_path)
+            return self.texture_data[original_path]["pointer"]
     
-    def del_texture(self, pointer):
-        keys = [k for k in self.texture_data if self.texture_data[k] == pointer]
-        for k in keys:
-            del self.texture_data[k]
 
 
-# this class is used for storing textures
 class Texture:
-    def __init__(self, texture, manager):
+    def __init__(self, texture,org_path, mod_dict, manager):
         self.manager = manager
-        self.path = texture
+        self.path = org_path
+        self.file_path = texture
         self.animated_texture = manager.texture_data[self.path]["Animated"]
         if self.animated_texture:
             self.current_frame = 0
@@ -46,9 +60,10 @@ class Texture:
             self.frame_lenght = manager.texture_data[self.path]["Default_Frame_Rate"]
             
         self.__texture__ = pygame.image.load("textures/" + texture)
+        if mod_dict != {}:
+            self.apply_modificators(mod_dict)
+
         
-        
-    
     # returns the canvas object used usually to render the object
     def get_texture(self):
         if not self.animated_texture:
@@ -69,38 +84,30 @@ class Texture:
             self.current_frame = 0
         else:
             self.current_frame+=1
-
-class ModifiedTexture(Texture):
-    def __init__(self, texture, manager, modifier_list):
-        self.modlist = modifier_list
-        super().__init__(texture, manager)
-        self.users = 1
-        self.update_texture_hash()
-
-    def __del__(self):
-        self.manager.del_texture(self)
-
-    def get_texture(self):
-        self.users+=1
-        return super().get_texture()
     
-    def take_out_trash(self):
-        if self.users == 0:
-            self.__del__()
-        else:
-            self.users = 0
-    def update_texture_hash(self):
-        self.hash = hash(self.__texture__)
+    def apply_modificators(self, mod_dict):
+        for mod_name, mod_values in mod_dict.items():
+            if mod_name == "Relative_Scale":
+                Modificators.Relative_Scale(self, mod_values)
+            elif mod_name == "Absolute_Scale":
+                Modificators.Absolute_Scale(self, mod_values)
+            elif mod_name == "Rotate":
+                Modificators.rotate(self, mod_values)
+            else:
+                error_messages.invalid_texture_modificator(mod_name)
 
 
 
-class Modificate:
-    def scale_by_pixel(texture,new_size):
-        
-        texture.__texture__ = pygame.transform.scale(texture.__texture__, new_size)
+class Modificators():
+    def Relative_Scale(texture, mod_values):
+        width = texture.__texture__.get_width()*float(mod_values[0])
+        height = texture.__texture__.get_height()*float(mod_values[1])
+        texture.__texture__ = pygame.transform.scale(texture.__texture__, (width,height))
+
+    def Absolute_Scale(texture, mod_values):
+        texture.__texture__ = pygame.transform.scale(texture.__texture__, (float(mod_values[0]),float(mod_values[1])))
     
-    def scale_by_ratio(texture,ratio):
-        width = texture.get_width()*ratio
-        height = texture.get_height()*ratio
-        texture.__texture__ = pygame.transform.scale(texture.__texture__,(width,height))
-
+    def rotate(texture, mod_values):
+        texture.__texture__ = pygame.transform.rotate(texture.__texture__, float(mod_values[0]))
+    
+#template for modified textures: "walls/floor_1.png:{Relative_Scale:(1.5;3.4),Rotate:(90)}"))

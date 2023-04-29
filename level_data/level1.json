@@ -1,6 +1,7 @@
 {
     "Metadata": [
-        "Walls contain array for every wall, with the format [X,Y]"
+        "Walls contain array for every wall, with the format [X,Y]",
+        "TEMPLATE FOR MODIFIED TEXTURE: walls/floor_1.png:{Relative_Scale:(1.5;3.4),Rotate:(90)}"
     ],
     "Data": {
         "Background": "backgrounds/level0.png",
@@ -10,11 +11,25 @@
                 "Y": 100,
                 "Width": 16,
                 "Height": 16,
-                "Texture": "walls/floor_1.png",
-                "Scale": 2,
+                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
                 "Layer": 1
             },
-            [100,116,16,16, "walls/floor_1.png"]
+            {
+                "X": 100,
+                "Y": 135,
+                "Width": 16,
+                "Height": 16,
+                "Texture": "walls/floor_1.png:{Relative_Scale:(2;4)}",
+                "Layer": 1
+            },
+            {
+                "X": 200,
+                "Y": 100,
+                "Width": 16,
+                "Height": 16,
+                "Texture": "walls/floor_1.png:{Relative_Scale:(1;1),Rotate:(45)}",
+                "Layer": 1
+            }
         ]
     }
 }
