@@ -1,8 +1,4 @@
-import game_class
 from pygame.locals import *
-import pygame
-import error_messages
-import texture_class
 
 # the basic Object class, every object inherits from this
 class Object:
@@ -13,7 +9,7 @@ class Object:
         self._y = y
         self._xSize = size_x
         self._ySize = size_y
-        self.layer = 0
+        self.layer = layer
         self.current_game = game
         self.render()
         self.unrender()
