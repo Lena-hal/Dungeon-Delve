@@ -1,5 +1,4 @@
 from game_object import *
-import game_class
 from pygame.locals import *
 import math
 sqrt2 = math.sqrt(2) # this is for optimalisation (many calculations prevented by precalculating)

@@ -2,6 +2,9 @@
     "backgrounds/level0.png": {
         "Animated": false
     },
+    "backgrounds/main_menu.png": {
+        "Animated": false
+    },
     "default/default.png": {
         "Animated": false
     },
@@ -12,6 +15,9 @@
         "Interpolated": false
     },
     "default/default_bg.png": {
+        "Animated": false
+    },
+    "gui/button.png": {
         "Animated": false
     },
     "gui/logo.png": {

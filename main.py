@@ -1,8 +1,5 @@
 import game_class
-import game_object
 import player_object
-import trigger_object
-import texture_class
 import gui
 
 def start_game(game):

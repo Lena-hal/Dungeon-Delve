@@ -30,6 +30,8 @@ class Object:
         self._xSize = new_x_size
         self._ySize = new_y_size
         
+    def draw(self, game):
+        game.__SURFACE__.blit(self.texture.get_texture(), (self._x, self._y))
     # adds the object to the list of entities to render
     def render(self):
         self.current_game.render_list.append(self)
