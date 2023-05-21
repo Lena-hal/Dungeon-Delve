@@ -1,5 +1,4 @@
 from game_object import *
-import game_class
 from pygame.locals import *
 
 # the trigger object > used for every interaction

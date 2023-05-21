@@ -1,7 +1,6 @@
 import pygame
 import error_messages
 import json
-import enum
 
 # this class is used to manage all the texture requests, preventing extra texture loading
 class Texture_manager:
@@ -39,12 +38,13 @@ class Texture_manager:
                 self.texture_data[original_path] = self.texture_data[texture_path].copy()
             else:
                 error_messages.texture_manager_invalid_path(texture_path)
-
-        if self.texture_data[original_path]["pointer"] == None:
+        if original_path not in self.texture_data:
+            error_messages.texture_manager_invalid_path(original_path)
+            original_path = "default/default.png"
+            texture_path = "default/default.png"
+        if self.texture_data[original_path]["pointer"] is None:
             self.texture_data[original_path]["pointer"] = Texture(texture_path,original_path,mod_dict,self)
-            return self.texture_data[original_path]["pointer"]
-        else:
-            return self.texture_data[original_path]["pointer"]
+        return self.texture_data[original_path]["pointer"]
     
 
 

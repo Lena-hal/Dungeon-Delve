@@ -1,29 +1,23 @@
 import pygame
-import threading
-from enum import Enum
 from pygame.locals import *
 import sys
 import texture_class
 import pygame_gui
 import level_class
+import gui
+import gameStatusEnum
 
-class gameStatus(Enum):
-    # this status sets how the game should act
-    ONLINE = 1
-    OFFLINE = 2
-    PAUSED = 3
-    IDLE = 4
-    ERROR = 5
+
 
 
 class game:
     # inicialization of the game, all the local stuff is set here
-    def __init__(self, FPS=60, X=1280,Y=960,description="Test Game Window, see docs and more at: https://github.com/Lena-hal"):
+    def __init__(self, FPS=60, X=1280,Y=960,description="Dungeon Delve"):
         self.window_width = X
         self.window_height = Y
         self.FPS = FPS
         pygame.init()
-        self.gui_manager = pygame_gui.UIManager((self.window_width, self.window_height), "textures/gui_theme.json")
+        self.gui_manager = gui.GUI_manager(game)
         self.manager = texture_class.Texture_manager()
 
         # TODO: find a better way of implementing background, because this is bad
@@ -32,15 +26,15 @@ class game:
         self.unrender_list = []
         self.gui_list = []
         self.gui_render_list = []
-
-        self.level = level_class.Level("level_data/level1.json",self) # background texture of current level 
+        self.level = level_class.Level("level_data/GUI_mainMenu.json",self)
+        #self.level = level_class.Level("level_data/level1.json",self)
 
         self.__SURFACE__ = pygame.display.set_mode(size=(self.window_width, self.window_height),flags=0,depth=64)
         self.reload_background()
         pygame.display.set_caption(description)
 
         self.__clock__ = pygame.time.Clock()
-        self.game_status = gameStatus.PAUSED
+        self.game_status = gameStatusEnum.gameStatus.PAUSED
         self.local_player = None
         
 
@@ -50,23 +44,16 @@ class game:
         self.__SURFACE__.blit(self.level.background.texture.get_texture(), (0,0))
 
     def fps_render(self):
-        if self.game_status == gameStatus.ONLINE:
+        if self.game_status == gameStatusEnum.gameStatus.ONLINE:
             for i in self.unrender_list:
                 # TODO: if optimalization needed add: dynamically change the size of unrendering for each enitity because _xSize*3 is sometimes too big 
                 self.__SURFACE__.blit(self.level.background.texture.get_texture(), ((i._x-i._xSize),(i._y-i._ySize)), area=((i._x-i._xSize),(i._y-i._ySize),i._xSize*3,i._ySize*3))
-
             for i in self.render_list:
                 # TODO add the layer mechanic
-                self.__SURFACE__.blit(i.texture.get_texture(), (i._x,i._y))
+                i.draw(self)
+        self.gui_manager.render()
+        self.__clock__.tick(self.FPS)
 
-        self.time_delta = self.__clock__.tick(self.FPS)/1000
-
-        if self.game_status == gameStatus.PAUSED:
-            self.gui_manager.update(self.time_delta)
-            self.gui_manager.draw_ui(self.__SURFACE__)
-
-            for i in self.gui_render_list:
-                self.__SURFACE__.blit(i.texture.get_texture(), (i._x,i._y))
 
         pygame.display.update()
 
@@ -88,6 +75,8 @@ class game:
     
     def game_loop(self):
         while (True):
+            # TODO: add a better way of showing fps count print(self.__clock__.get_fps())
+                
             self.event_loop()
             self.fps_render()
     

@@ -1,0 +1,9 @@
+{
+    "Metadata": [
+        "TEMPLATE FOR MODIFIED TEXTURE: walls/floor_1.png:{Relative_Scale:(1.5;3.4),Rotate:(90)}"
+    ],
+    "Data": {
+        "Background": "backgrounds/main_menu.png",
+        "Menus": ["MainMenu"]
+    }
+}

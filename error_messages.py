@@ -16,3 +16,9 @@ def texture_manager_invalid_path(path):
 
 def invalid_texture_modificator(modifier):
     print(f"ERROR - texture modifiing process could not find {modifier}, this modifier is not suported {REPORT_LINK}")
+
+def polymorphism_rule_violation(victim):
+    print("ERROR - polymorphism rule was violated, this happened to:" + str(victim) + REPORT_LINK)
+
+def polymorphism_rule_violation_made_an_issue(victim):
+    print("ERROR - polymorphism rule was violated and caused an issue, this happened to:" + str(victim) + REPORT_LINK)
