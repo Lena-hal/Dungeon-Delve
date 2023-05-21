@@ -76,7 +76,7 @@ class game:
     def game_loop(self):
         while (True):
             # TODO: add a better way of showing fps count print(self.__clock__.get_fps())
-                
+            # print(self.__clock__.get_fps())
             self.event_loop()
             self.fps_render()
     
