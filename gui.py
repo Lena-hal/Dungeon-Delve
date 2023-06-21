@@ -2,6 +2,7 @@ import pygame
 import gameStatusEnum
 import error_messages
 import enum
+import level_class
 
 class GUI_manager:
     def __init__(self,game) -> None:
@@ -61,6 +62,7 @@ class MainMenu(Menu):
                     if "Start" in i.tags:
                         self.game.game_status  = gameStatusEnum.gameStatus.ONLINE
                         self.game.reload_background()
+                        self.game.level = level_class.Level("level_data/level1.json", self.game)
 
 class GUI_element():
     def __init__(self, game, x, y, tags=[]) -> None:

@@ -2,7 +2,7 @@ from pygame.locals import *
 
 # the basic Object class, every object inherits from this
 class Object:
-    def __init__(self, texture="default.png", level="level0.lvl", x=0,y=0,size_x=16,size_y=16,layer=0, game = None):
+    def __init__(self, texture="default.png", level="level1.json", x=0,y=0,size_x=16,size_y=16,layer=0, game = None):
         self.texture = game.manager.get_texture(texture)
         self._level = level
         self._x = x

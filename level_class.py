@@ -28,8 +28,9 @@ class Background:
         self._x = 0
         self._y = 0
         self.texture = game.manager.get_texture(path)
-        print(self.texture)
-        self.game.render_list.append(self)
+        for i in range(len(self.game.render_list)):
+            if isinstance(self.game.render_list[i],Background):
+                self.game.render_list[i] = self
     def draw(self,game):
         self.game.__SURFACE__.blit(self.texture.get_texture(),(self._x,self._y))
     
