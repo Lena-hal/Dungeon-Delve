@@ -65,7 +65,8 @@ class GUI_element():
     def draw(self, game):
         try:
             game.__SURFACE__.blit(self.texture.get_texture(), (self._x, self._y))
-        except:
+        except Exception as e:
+            print(e)
             error_messages.polymorphism_rule_violation_made_an_issue(self)
 
     def AlignSelf(self, align, posx, posy, game, width, height):

@@ -13,24 +13,24 @@ class player(game_object.Object):
     def interaction(self, key=None, interaction_author=None):
         if interaction_author == self:
             mapping = {
-                    #  W     A      S    D
-                    (True, True, True, True): None,
-                    (True, True, True, False): lambda: self.relative_pos_change(x_change=-self.speed),  # left
-                    (True, True, False, True): lambda: self.relative_pos_change(y_change=-self.speed),  # up
-                    (True, True, False, False): lambda: self.relative_pos_change(x_change=-(self.speed / sqrt2), y_change=-(self.speed / sqrt2)),  # left up
-                    (True, False, True, True): lambda: self.relative_pos_change(x_change=self.speed),  # right
-                    (True, False, True, False): None,
-                    (True, False, False, True): lambda: self.relative_pos_change(x_change=(self.speed / sqrt2), y_change=-(self.speed / sqrt2)),  # right up
-                    (True, False, False, False): lambda: self.relative_pos_change(y_change=-self.speed),  # up
-                    (False, True, True, True): lambda: self.relative_pos_change(y_change=self.speed),  # down
-                    (False, True, True, False): lambda: self.relative_pos_change(x_change=-(self.speed / sqrt2), y_change=(self.speed / sqrt2)),  # left down
-                    (False, True, False, True): None,
-                    (False, True, False, False): lambda: self.relative_pos_change(x_change=-self.speed),  # left
-                    (False, False, True, True): lambda: self.relative_pos_change(x_change=(self.speed / sqrt2), y_change=(self.speed / sqrt2)),  # right down
-                    (False, False, True, False): lambda: self.relative_pos_change(y_change=self.speed),  # down
-                    (False, False, False, True): lambda: self.relative_pos_change(x_change=self.speed),  # right
-                    (False, False, False, False): None,
-                        }
+                #  W     A      S    D
+                (True, True, True, True): None,
+                (True, True, True, False): lambda: self.relative_pos_change(x_change=-self.speed),  # left
+                (True, True, False, True): lambda: self.relative_pos_change(y_change=-self.speed),  # up
+                (True, True, False, False): lambda: self.relative_pos_change(x_change=-(self.speed / sqrt2), y_change=-(self.speed / sqrt2)),  # left up
+                (True, False, True, True): lambda: self.relative_pos_change(x_change=self.speed),  # right
+                (True, False, True, False): None,
+                (True, False, False, True): lambda: self.relative_pos_change(x_change=(self.speed / sqrt2), y_change=-(self.speed / sqrt2)),  # right up
+                (True, False, False, False): lambda: self.relative_pos_change(y_change=-self.speed),  # up
+                (False, True, True, True): lambda: self.relative_pos_change(y_change=self.speed),  # down
+                (False, True, True, False): lambda: self.relative_pos_change(x_change=-(self.speed / sqrt2), y_change=(self.speed / sqrt2)),  # left down
+                (False, True, False, True): None,
+                (False, True, False, False): lambda: self.relative_pos_change(x_change=-self.speed),  # left
+                (False, False, True, True): lambda: self.relative_pos_change(x_change=(self.speed / sqrt2), y_change=(self.speed / sqrt2)),  # right down
+                (False, False, True, False): lambda: self.relative_pos_change(y_change=self.speed),  # down
+                (False, False, False, True): lambda: self.relative_pos_change(x_change=self.speed),  # right
+                (False, False, False, False): None,
+            }
             func = mapping.get((key[K_w], key[K_a], key[K_s], key[K_d]), lambda: None)
             if func is not None:
                 func()

@@ -72,7 +72,8 @@ class Texture:
                 frame_width = self.__texture__.get_width()
                 frame_height = self.__texture__.get_height() / self.max_frame
                 return self.__texture__.subsurface(pygame.Rect(0, frame_height * (self.current_frame // self.frame_lenght), frame_width, frame_height))
-            except:
+            except Exception as e:
+                print(e)
                 error_messages.animation_max_frame_exceded(self)
                 return self.__texture__
 
