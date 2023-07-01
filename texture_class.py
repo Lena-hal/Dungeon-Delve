@@ -16,12 +16,12 @@ class Texture_manager:
         if cls.__instance is None:
             cls.__instance = super().__new__(cls)
         return cls.__instance
-    
+
     def get_texture(self, texture_path):
-        # object can request two types of textures: 
-            # original texture - just the path (textures/texture_path.png)
-            # modified texture - the path and after ":" list of modificators in the form {modificator_name: (inputs), ...} (textures/texture_path.png:{modificator_name:inputs,modificator_name:inputs})
-            # user can enter more then 1 argument for 1 modfier so Scale:(1.5,3.4) is valid argument
+        # object can request two types of textures:
+        #    original texture - just the path (textures/texture_path.png)
+        #    modified texture - the path and after ":" list of modificators in the form {modificator_name: (inputs), ...} (textures/texture_path.png:{modificator_name:inputs,modificator_name:inputs})
+        #    user can enter more then 1 argument for 1 modfier so Scale:(1.5,3.4) is valid argument
         mod_string = ""
         mod_dict = {}
         original_path = texture_path
@@ -43,27 +43,25 @@ class Texture_manager:
             original_path = "default/default.png"
             texture_path = "default/default.png"
         if self.texture_data[original_path]["pointer"] is None:
-            self.texture_data[original_path]["pointer"] = Texture(texture_path,original_path,mod_dict,self)
+            self.texture_data[original_path]["pointer"] = Texture(texture_path, original_path, mod_dict, self)
         return self.texture_data[original_path]["pointer"]
-    
 
 
 class Texture:
-    def __init__(self, texture,org_path, mod_dict, manager):
+    def __init__(self, texture, org_path, mod_dict, manager):
         self.manager = manager
         self.path = org_path
         self.file_path = texture
         self.animated_texture = manager.texture_data[self.path]["Animated"]
+
         if self.animated_texture:
             self.current_frame = 0
             self.max_frame = manager.texture_data[self.path]["Frames"]
             self.frame_lenght = manager.texture_data[self.path]["Default_Frame_Rate"]
-            
         self.__texture__ = pygame.image.load("textures/" + texture)
         if mod_dict != {}:
             self.apply_modificators(mod_dict)
 
-        
     # returns the canvas object used usually to render the object
     def get_texture(self):
         if not self.animated_texture:
@@ -72,19 +70,19 @@ class Texture:
             try:
                 self.animate()
                 frame_width = self.__texture__.get_width()
-                frame_height = self.__texture__.get_height()/self.max_frame
-                return self.__texture__.subsurface(pygame.Rect(0,frame_height*(self.current_frame//self.frame_lenght),frame_width,frame_height))
+                frame_height = self.__texture__.get_height() / self.max_frame
+                return self.__texture__.subsurface(pygame.Rect(0, frame_height * (self.current_frame // self.frame_lenght), frame_width, frame_height))
             except:
                 error_messages.animation_max_frame_exceded(self)
                 return self.__texture__
-    
+
     # if texture animated, changes the frame to the next one
     def animate(self):
-        if (self.current_frame+1 == self.max_frame*self.frame_lenght):
+        if (self.current_frame + 1 == self.max_frame * self.frame_lenght):
             self.current_frame = 0
         else:
-            self.current_frame+=1
-    
+            self.current_frame += 1
+
     def apply_modificators(self, mod_dict):
         for mod_name, mod_values in mod_dict.items():
             if mod_name == "Relative_Scale":
@@ -97,17 +95,14 @@ class Texture:
                 error_messages.invalid_texture_modificator(mod_name)
 
 
-
 class Modificators():
     def Relative_Scale(texture, mod_values):
-        width = texture.__texture__.get_width()*float(mod_values[0])
-        height = texture.__texture__.get_height()*float(mod_values[1])
-        texture.__texture__ = pygame.transform.scale(texture.__texture__, (width,height))
+        width = texture.__texture__.get_width() * float(mod_values[0])
+        height = texture.__texture__.get_height() * float(mod_values[1])
+        texture.__texture__ = pygame.transform.scale(texture.__texture__, (width, height))
 
     def Absolute_Scale(texture, mod_values):
-        texture.__texture__ = pygame.transform.scale(texture.__texture__, (float(mod_values[0]),float(mod_values[1])))
-    
+        texture.__texture__ = pygame.transform.scale(texture.__texture__, (float(mod_values[0]), float(mod_values[1])))
+
     def rotate(texture, mod_values):
         texture.__texture__ = pygame.transform.rotate(texture.__texture__, float(mod_values[0]))
-    
-#template for modified textures: "walls/floor_1.png:{Relative_Scale:(1.5;3.4),Rotate:(90)}"))

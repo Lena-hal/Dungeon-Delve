@@ -1,6 +1,4 @@
 # TODO
-## shelling system
-the shelling system is a system for modifiing objects on the go using premade shells, the base object is "Object" and everything else is a "Shell" newer shells rewrite the old shell data if necessery. Shell is something like a class, it adds some functionality based on the shell specification (playble shell adds controls for the player, enemy shell adds functionality for hostility on the player shelled objects)
 ## new level object format
 - objects -> every single object like netity, wall, trigger etc.
 - links -> link to another level/location in level
@@ -9,8 +7,6 @@ the shelling system is a system for modifiing objects on the go using premade sh
 
 
 
-## GUI level linking
-create a system to link GUI objects to levels because of the renderer that needs to know which gui it has to render
 
 ## Renderer
 Create a render manager that will take the current level and render it to the screen with any modifiers

@@ -14,6 +14,22 @@
                 "Layer": 1
             },
             {
+                "X": 110,
+                "Y": 105,
+                "Width": 16,
+                "Height": 16,
+                "Texture": "walls/floor_1.png:{Relative_Scale:(4;4)}",
+                "Layer": 52
+            },
+            {
+                "X": 110,
+                "Y": 215,
+                "Width": 16,
+                "Height": 16,
+                "Texture": "walls/floor_1.png:{Relative_Scale:(4;4)}",
+                "Layer": 52
+            },
+            {
                 "X": 100,
                 "Y": 135,
                 "Width": 16,
