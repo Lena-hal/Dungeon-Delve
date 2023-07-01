@@ -6,6 +6,7 @@ import pygame_gui
 import level_class
 import gui
 import gameStatusEnum
+import renderer
 
 
 
@@ -17,18 +18,15 @@ class game:
         self.window_height = Y
         self.FPS = FPS
         pygame.init()
-        self.gui_manager = gui.GUI_manager(game)
-        self.manager = texture_class.Texture_manager()
+        # manager inicializers
+        self.texture_manager = texture_class.Texture_manager()
+        self.renderer = renderer.Render_manager(self)
+        self.gui_manager = gui.GUI_manager(self)
+        self.level_manager = level_class.Level_manager(self)
 
-        # TODO: find a better way of implementing background, because this is bad
+        self.level_manager.set_level("GUI_mainMenu.json")
+
         self.trigger_list = []
-        self.render_list = []
-        self.unrender_list = []
-        self.gui_list = []
-        self.gui_render_list = []
-        self.level = level_class.Level("level_data/GUI_mainMenu.json",self)
-        #self.level = level_class.Level("level_data/level1.json",self)
-
         self.__SURFACE__ = pygame.display.set_mode(size=(self.window_width, self.window_height),flags=0,depth=64)
         self.reload_background()
         pygame.display.set_caption(description)
@@ -41,17 +39,10 @@ class game:
         pygame.key.set_repeat(1,100)
     
     def reload_background(self):
-        self.__SURFACE__.blit(self.level.background.texture.get_texture(), (0,0))
+        self.__SURFACE__.blit(self.level_manager.active_level.background.texture.get_texture(), (0,0))
 
     def fps_render(self):
-        if self.game_status == gameStatusEnum.gameStatus.ONLINE:
-            for i in self.unrender_list:
-                # TODO: if optimalization needed add: dynamically change the size of unrendering for each enitity because _xSize*3 is sometimes too big 
-                self.__SURFACE__.blit(self.level.background.texture.get_texture(), ((i._x-i._xSize),(i._y-i._ySize)), area=((i._x-i._xSize),(i._y-i._ySize),i._xSize*3,i._ySize*3))
-            for i in self.render_list:
-                # TODO add the layer mechanic
-                i.draw(self)
-        self.gui_manager.render()
+        self.renderer.render()
         self.__clock__.tick(self.FPS)
 
 
@@ -65,8 +56,6 @@ class game:
                 pygame.quit()
                 sys.exit()
             self.gui_manager.process_events(event)
-            for i in self.gui_list:
-                i.interaction(event)
         
         key_pressed = pygame.key.get_pressed()
         for i in self.trigger_list:

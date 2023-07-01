@@ -3,6 +3,7 @@ import gameStatusEnum
 import error_messages
 import enum
 import level_class
+import player_object
 
 class GUI_manager:
     def __init__(self,game) -> None:
@@ -12,27 +13,19 @@ class GUI_manager:
         
     
     def process_events(self,event):
-        for i in self.active_menus:
+        for i in self.game.level_manager.active_level.gui_list:
             i.interaction(event)
-    
-    def render(self):
-        for i in self.active_menus:
-            i.render()
-
-        
 
 
 class Menu:
     def __init__(self,game) -> None:
         self.game = game
-        self.manager = game.gui_manager
-        self.game.gui_list.append(self)
         self.elements = []
     
     def interaction(self,event):
         pass
 
-    def render(self):
+    def draw(self,game):
         for i in self.elements:
             i.draw(self.game)
     
@@ -62,20 +55,19 @@ class MainMenu(Menu):
                     if "Start" in i.tags:
                         self.game.game_status  = gameStatusEnum.gameStatus.ONLINE
                         self.game.reload_background()
-                        self.game.level = level_class.Level("level_data/level1.json", self.game)
+                        self.game.level_manager.set_level("level1.json")
+                        player_object.player(game=self.game,texture="default/default_animated.png",layer=50)
 
 class GUI_element():
     def __init__(self, game, x, y, tags=[]) -> None:
         self.game = game
         self._x = x
         self._y = y
-        self.game.gui_render_list.append(self)
         self.tags = tags
     
     def draw(self, game):
         try:
-            game.__SURFACE__.blit(self.texture, (self._x, self._y))
-            error_messages.polymorphism_rule_violation(self)
+            game.__SURFACE__.blit(self.texture.get_texture(), (self._x, self._y))
         except:
             error_messages.polymorphism_rule_violation_made_an_issue(self)
 
@@ -99,24 +91,20 @@ class GUI_element():
 
 class GUI_button(GUI_element):
     def __init__(self, game, texture, posx, posy, align=(AligPos.Left, AligPos.Top), tags=[]) -> None:
-        self.texture = game.manager.get_texture(texture)
+        self.texture = game.texture_manager.get_texture(texture)
         posx, posy = self.AlignSelf(align, posx, posy, game, self.texture.get_texture().get_width(), self.texture.get_texture().get_height())
         
         super().__init__(game, posx, posy,tags)
     
-    def draw(self, game):
-        game.__SURFACE__.blit(self.texture.get_texture(), (self._x, self._y))
     
 
 class GUI_image(GUI_element):
     def __init__(self, game, texture, posx, posy, align=(AligPos.Left, AligPos.Top), tags=[]) -> None:
-        self.texture = game.manager.get_texture(texture)
+        self.texture = game.texture_manager.get_texture(texture)
         posx, posy = self.AlignSelf(align, posx, posy, game, self.texture.get_texture().get_width(), self.texture.get_texture().get_height())
         
         super().__init__(game, posx, posy,tags)
 
-    def draw(self, game):
-        game.__SURFACE__.blit(self.texture.get_texture(), (self._x, self._y))
     
         
 class GUI_text(GUI_element):
