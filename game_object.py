@@ -1,18 +1,22 @@
 from pygame.locals import *
+import level_class
 
 # the basic Object class, every object inherits from this
 class Object:
-    def __init__(self, texture="default.png", level="level0.lvl", x=0,y=0,size_x=16,size_y=16,layer=0, game = None):
-        self.texture = game.manager.get_texture(texture)
-        self._level = level
+    def __init__(self, texture="default.png", level="level1.json", x=0,y=0,size_x=16,size_y=16,layer=0, game = None):
+        self.texture = game.texture_manager.get_texture(texture)
+        
+        #if level not in game.level_manager.loaded_levels:
+        #    print("level not loaded")
+        #    return None
+        if layer not in game.level_manager.loaded_levels[level].loaded_objects:
+            game.level_manager.loaded_levels[level].loaded_objects[layer] = []
+        game.level_manager.loaded_levels[level].loaded_objects[layer].append(self)
         self._x = x
         self._y = y
         self._xSize = size_x
         self._ySize = size_y
-        self.layer = layer
-        self.current_game = game
-        self.render()
-        self.unrender()
+        self.game = game
 
 
     # moves the object with relative coordinates
@@ -33,36 +37,3 @@ class Object:
     def draw(self, game):
         game.__SURFACE__.blit(self.texture.get_texture(), (self._x, self._y))
     # adds the object to the list of entities to render
-    def render(self):
-        self.current_game.render_list.append(self)
-    
-    # removes the object from the list of renderable entities
-    def stop_rendering(self):
-        if self in self.current_game.render_list:
-            self.current_game.render_list.pop(self)
-            
-    
-    # adds the object to the list of entities that shloud be rerendered every frame
-    def unrender(self):
-        self.current_game.unrender_list.append(self)
-    
-    # removes the object to the list of entities that shloud be rerendered every frame
-    def stop_unrendering(self):
-        if self in self.current_game.unrender_list:
-            self.current_game.unrender_list.pop(self)
-
-    # removes all the dependencies to itself in the code (kills itself)
-    def remove(self):
-        self.stop_rendering()
-        self.stop_unrendering()
-
-
-
-    
-    
-        
-    
-
-
-
-
