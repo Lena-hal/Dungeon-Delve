@@ -1,12 +1,8 @@
 import game_class
-import player_object
-import gui
-
 
 
 if __name__ == "__main__":
-    
-    
+    # inicialization of the game
     game = game_class.game()
-    gui.MainMenu(game)
+    # start the game loop
     game.game_loop()

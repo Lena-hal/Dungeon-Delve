@@ -10,7 +10,6 @@ Before running the game, the following packages need to be installed:
 
 - Pygame
 - Python 3.x
-- Pygame-gui
 
 or you can install simply all the packages using `pip install -r requirements.txt`
 Then, simply run the main.py file.
