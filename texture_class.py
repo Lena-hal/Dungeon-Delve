@@ -17,6 +17,7 @@ class Texture_manager:
             cls.__instance = super().__new__(cls)
         return cls.__instance
 
+    # texture assigment function that tries to use as same textures if possible
     def get_texture(self, texture_path):
         # object can request two types of textures:
         #    original texture - just the path (textures/texture_path.png)
@@ -46,7 +47,7 @@ class Texture_manager:
             self.texture_data[original_path]["pointer"] = Texture(texture_path, original_path, mod_dict, self)
         return self.texture_data[original_path]["pointer"]
 
-
+# the class for all the texture objects, it contains all the texture data and methods to manage it
 class Texture:
     def __init__(self, texture, org_path, mod_dict, manager):
         self.manager = manager
@@ -64,10 +65,12 @@ class Texture:
 
     # returns the canvas object used usually to render the object
     def get_texture(self):
+        # animation controller
         if not self.animated_texture:
             return self.__texture__
         else:
             try:
+                # this tries to animate the texture, if it fails it returns the original texture
                 self.animate()
                 frame_width = self.__texture__.get_width()
                 frame_height = self.__texture__.get_height() / self.max_frame
@@ -84,6 +87,7 @@ class Texture:
         else:
             self.current_frame += 1
 
+    # this function is used to apply modificators to the texture
     def apply_modificators(self, mod_dict):
         for mod_name, mod_values in mod_dict.items():
             if mod_name == "Relative_Scale":
@@ -95,15 +99,18 @@ class Texture:
             else:
                 error_messages.invalid_texture_modificator(mod_name)
 
-
+# this class is used to manage all the modificators that can be applied to the texture
 class Modificators():
+    # scales the texture by relative values eg.: (1.5,3.4)
     def Relative_Scale(texture, mod_values):
         width = texture.__texture__.get_width() * float(mod_values[0])
         height = texture.__texture__.get_height() * float(mod_values[1])
         texture.__texture__ = pygame.transform.scale(texture.__texture__, (width, height))
 
+    # scales the texture by absolute values (pixels) eg.: (20,50)
     def Absolute_Scale(texture, mod_values):
         texture.__texture__ = pygame.transform.scale(texture.__texture__, (float(mod_values[0]), float(mod_values[1])))
 
+    # rotates the texture by the given angle (in degrees) eg.: (90)
     def rotate(texture, mod_values):
         texture.__texture__ = pygame.transform.rotate(texture.__texture__, float(mod_values[0]))

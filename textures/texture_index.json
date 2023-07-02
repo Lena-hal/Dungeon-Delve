@@ -23,6 +23,12 @@
     "gui/logo.png": {
         "Animated": false
     },
+    "player/default.png": {
+        "Animated": true,
+        "Frames": 2,
+        "Default_Frame_Rate": 20,
+        "Interpolated": false
+    },
     "trigger/trigger.png": {
         "Animated": false
     },

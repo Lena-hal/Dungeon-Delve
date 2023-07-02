@@ -1,5 +1,6 @@
 import game_object
-# template for modified textures: "walls/floor_1.png:{Relative_Scale:(1.5;3.4),Rotate:(90)}"))
+
+# this class is used to create the walls in the game
 class Wall(game_object.Object):
     def __init__(self, wall_data, game, level):
 

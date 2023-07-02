@@ -1,5 +1,5 @@
 
-# the basic Object class, every object inherits from this
+# the basic Object class, every basic object inherits from this exept for the GUI
 class Object:
     def __init__(self, texture="default.png", level="level1.json", x=0, y=0, size_x=16, size_y=16, layer=0, game=None):
         self.texture = game.texture_manager.get_texture(texture)
@@ -28,6 +28,6 @@ class Object:
         self._xSize = new_x_size
         self._ySize = new_y_size
 
+    # draws itself on a screen
     def draw(self, game):
         game.__SURFACE__.blit(self.texture.get_texture(), (self._x, self._y))
-    # adds the object to the list of entities to render
