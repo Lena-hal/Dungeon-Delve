@@ -1,4 +1,4 @@
-<img alt="red" src="https://img.shields.io/badge/-This game is in early stage of development, right now it has almost no features finished-red">
+<img alt="red" src="https://img.shields.io/badge/-This game is in early stage of development-red">
 
 # Dungeon Delve
 
