@@ -1,3 +1,4 @@
+import pygame
 
 # this class is used to render the game
 class Render_manager:
@@ -18,3 +19,6 @@ class Render_manager:
                 for k in i.loaded_objects[j]:
                     k.draw(self.game)
             self.game.__SURFACE__.blit(i.screen, (i._x, i._y))
+
+        self.game.delta_time = self.game.__clock__.tick(self.game.FPS)
+        pygame.display.update()

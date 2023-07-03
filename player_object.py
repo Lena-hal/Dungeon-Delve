@@ -10,6 +10,7 @@ class player(game_object.Object):
         self.game.trigger_list.append(self)
         self.game.local_player = self
         self.speed = 5  # movement speed
+        self.game.event_manager.add_event_listener(self)
 
     # this function is called when something interacts with the player
     def interaction(self, key=None, interaction_author=None):

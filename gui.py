@@ -3,17 +3,6 @@ import error_messages
 import enum
 import player_object
 
-# this manager has under control everything to do with GUIs - event processing TODO: replace this with a proper event system
-class GUI_manager:
-    def __init__(self, game) -> None:
-        self.game = game
-
-    # this is called for every Menu for every event
-    def process_events(self, event):
-        for i in self.game.level_manager.active_levels:
-            for j in i.gui_list:
-                j.interaction(event)
-
 # the main menu class that contains all the elements in the menu and manages them
 class Menu:
     def __init__(self, game, level) -> None:

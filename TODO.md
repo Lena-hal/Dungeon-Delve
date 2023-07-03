@@ -18,9 +18,6 @@ The renderer should be able to do the following tasks:
 ## Shader Manager
 can change some property of every pixel on the screen
 
-## Event manager
-This manager should work with every event that happened, it should replace the trigger_list list and the GUI_manager
-
 ## FPS
 also add delta time integration to stop those slow speed bugs
 
