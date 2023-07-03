@@ -1,6 +1,7 @@
 import json
 import wall_class
 import gui
+import game_object
 
 # this manager is used to load levels interact with them
 class Level_manager:
@@ -33,8 +34,7 @@ class Level:
             self.level_data = json.load(data)
 
         # loading background
-        self.background = Background(self.level_data["Data"]["Background"], self.game)
-        print(self.background)
+        game_object.Object(texture=self.level_data["Data"]["Background"], level=level_path, game=self.game)
 
         # loading all wall objects
         if "Walls" in self.level_data["Data"]:
@@ -55,16 +55,3 @@ class Level:
             for i in loaded_gui_elements:
                 self.loaded_objects[100].append(i)
                 self.gui_list.append(i)
-
-
-# class that represents background TODO: change the background object to a basic object
-class Background:
-    def __init__(self, path, game) -> None:
-        self.game = game
-        self._x = 0
-        self._y = 0
-        self.texture = game.texture_manager.get_texture(path)
-
-    # used to draw the background
-    def draw(self, game):
-        self.game.__SURFACE__.blit(self.texture.get_texture(), (self._x, self._y))
