@@ -4,6 +4,7 @@
     ],
     "Data": {
         "Background": "default/default_bg.png",
+        "BackgroundTransparent": true,
         "Menus": [],
         "SizeX": 1,
         "SizeY": 1,

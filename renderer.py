@@ -9,6 +9,10 @@ class Render_manager:
     def render(self):
         render_data = self.game.level_manager.active_levels
         for i in render_data:
+            if i.level_data["Data"]["BackgroundTransparent"] is True:
+                i.screen.fill((0, 0, 0, 0))
+
+        for i in render_data:
             sorted_layers = sorted(i.loaded_objects.keys())
             for j in sorted_layers:
                 for k in i.loaded_objects[j]:

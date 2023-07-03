@@ -41,9 +41,10 @@ class game:
     # used to render the game frame and update the fps
     def fps_render(self):
         self.renderer.render()
-        self.__clock__.tick(self.FPS)
+        self.delta_time = self.__clock__.tick(self.FPS)
 
         pygame.display.update()
+        # pygame.display.flip()
 
     # used to process all the events that happen in the game TODO: create event manager to manage this
     def event_loop(self):

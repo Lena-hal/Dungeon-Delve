@@ -44,10 +44,11 @@ class Level():
         self.width = self.level_data["Data"]["SizeX"] * self.game.window_width
         self.height = self.level_data["Data"]["SizeY"] * self.game.window_height
 
-        self.screen = pygame.Surface((self.width, self.height))
+        self.screen = pygame.Surface((self.width, self.height)).convert_alpha()
 
         # loading background
-        game_object.Object(texture=self.level_data["Data"]["Background"], level=level_path, game=self.game)
+        if "Background" in self.level_data["Data"]:
+            game_object.Object(texture=self.level_data["Data"]["Background"], level=level_path, game=self.game)
 
         # loading all wall objects
         if "Walls" in self.level_data["Data"]:

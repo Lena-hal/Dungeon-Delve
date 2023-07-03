@@ -3,10 +3,10 @@
         "TEMPLATE FOR MODIFIED TEXTURE: walls/floor_1.png:{Relative_Scale:(1.5;3.4),Rotate:(90)}"
     ],
     "Data": {
-        "Background": "backgrounds/blank.png",
+        "BackgroundTransparent": true,
         "Menus": ["FPS"],
-        "SizeX": 0.05,
-        "SizeY": 0.02,
+        "SizeX": 0.1,
+        "SizeY": 0.1,
         "PosX": 0,
         "PosY": 0
 

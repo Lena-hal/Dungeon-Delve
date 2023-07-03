@@ -15,6 +15,9 @@ The renderer should be able to do the following tasks:
   - level view -> shows the whole level 
   - dynamic -> moves with the character
 
+## Shader Manager
+can change some property of every pixel on the screen
+
 ## Event manager
 This manager should work with every event that happened, it should replace the trigger_list list and the GUI_manager
 
