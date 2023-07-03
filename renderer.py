@@ -1,4 +1,5 @@
 import pygame
+import camera_class
 
 # this class is used to render the game
 class Render_manager:
@@ -9,6 +10,8 @@ class Render_manager:
     # takes the active level and renders it TODO: add a ability to render multible levels at once
     def render(self):
         render_data = self.game.level_manager.active_levels
+        if self.game.camera_manager.mode == camera_class.Camera_mode.dynamic or self.game.camera_manager.mode == camera_class.Camera_mode.level:
+            self.game.__SURFACE__.fill((0, 0, 0))
         for i in render_data:
             if i.level_data["Data"]["BackgroundTransparent"] is True:
                 i.screen.fill((0, 0, 0, 0))
@@ -20,5 +23,5 @@ class Render_manager:
                     k.draw(self.game)
             self.game.__SURFACE__.blit(i.screen, (i._x, i._y))
 
-        self.game.delta_time = self.game.__clock__.tick(self.game.FPS)
+        self.game.delta_time = self.game.__clock__.tick() / 1000
         pygame.display.update()

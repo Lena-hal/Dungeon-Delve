@@ -155,13 +155,14 @@ class MainMenu(Menu):
                         self.game.level_manager.set_level("fps.json")
                         self.game.level_manager.unset_level("GUI_mainMenu.json")
 
-                        player_object.player(game=self.game, texture="player/default.png:{Relative_Scale:(4;4)}", size_x=64, size_y=64, layer=50)
+                        player_object.player(game=self.game, texture="player/default.png:{Relative_Scale:(4;4)}", size_x=64, size_y=64, layer=50, x=self.game.window_width / 2, y=self.game.window_height / 2)
 
 class FPS(Menu):
     def __init__(self, game, level) -> None:
         super().__init__(game, level)
+        self.game.event_manager.add_tick_listener(self)
         self.elements.append(GUI_text(game, level, f"FPS: {self.game.__clock__.get_fps()//1}", 0, 0, align=(AligPos.Left, AligPos.Top)))
 
-    def interaction(self, event):
+    def tick(self):
         for i in self.elements:
             i.update_text(f"FPS: {self.game.__clock__.get_fps()//1}")

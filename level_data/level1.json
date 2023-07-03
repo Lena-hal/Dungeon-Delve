@@ -9,6 +9,7 @@
         "SizeY": 1,
         "PosX": 0,
         "PosY": 0,
+        "Movable": true,
         "Walls": [
             {
                 "X": 100,

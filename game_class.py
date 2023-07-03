@@ -3,6 +3,7 @@ import texture_class
 import level_class
 import renderer
 import event_class
+import camera_class
 
 
 class game:
@@ -26,6 +27,7 @@ class game:
         self.renderer = renderer.Render_manager(self)
         self.level_manager = level_class.Level_manager(self)
         self.event_manager = event_class.Event_manager(self)
+        self.camera_manager = camera_class.Camera_manager(self)
 
         # inicialization of the first level
         self.level_manager.set_level("GUI_mainMenu.json")
