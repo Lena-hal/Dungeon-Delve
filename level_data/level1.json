@@ -4,6 +4,11 @@
     ],
     "Data": {
         "Background": "backgrounds/level0.png",
+        "BackgroundTransparent": true,
+        "SizeX": 1,
+        "SizeY": 1,
+        "PosX": 0,
+        "PosY": 0,
         "Walls": [
             {
                 "X": 100,

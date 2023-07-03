@@ -59,7 +59,7 @@ class Texture:
             self.current_frame = 0
             self.max_frame = manager.texture_data[self.path]["Frames"]
             self.frame_lenght = manager.texture_data[self.path]["Default_Frame_Rate"]
-        self.__texture__ = pygame.image.load("textures/" + texture)
+        self.__texture__ = pygame.image.load("textures/" + texture).convert_alpha()
         if mod_dict != {}:
             self.apply_modificators(mod_dict)
 

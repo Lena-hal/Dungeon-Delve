@@ -1,4 +1,7 @@
 {
+    "backgrounds/blank.png": {
+        "Animated": false
+    },
     "backgrounds/level0.png": {
         "Animated": false
     },

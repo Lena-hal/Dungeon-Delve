@@ -3,10 +3,11 @@
 class Object:
     def __init__(self, texture="default.png", level="level1.json", x=0, y=0, size_x=16, size_y=16, layer=0, game=None):
         self.texture = game.texture_manager.get_texture(texture)
-
         if layer not in game.level_manager.loaded_levels[level].loaded_objects:
             game.level_manager.loaded_levels[level].loaded_objects[layer] = []
         game.level_manager.loaded_levels[level].loaded_objects[layer].append(self)
+        self.level = game.level_manager.loaded_levels[level]
+
         self._x = x
         self._y = y
         self._xSize = size_x
@@ -30,4 +31,4 @@ class Object:
 
     # draws itself on a screen
     def draw(self, game):
-        game.__SURFACE__.blit(self.texture.get_texture(), (self._x, self._y))
+        self.level.screen.blit(self.texture.get_texture(), (self._x, self._y))

@@ -1,0 +1,25 @@
+{
+    "Metadata": [
+        "TEMPLATE FOR MODIFIED TEXTURE: walls/floor_1.png:{Relative_Scale:(1.5;3.4),Rotate:(90)}"
+    ],
+    "Data": {
+        "Background": "default/default_bg.png",
+        "BackgroundTransparent": true,
+        "Menus": [],
+        "SizeX": 1,
+        "SizeY": 1,
+        "PosX": 0,
+        "PosY": 0,
+        "Walls":[
+            {
+                "X": 0,
+                "Y": 0,
+                "Width": 0,
+                "Height": 0,
+                "Texture": "default/default.png:{Relative_Scale:(2;2)}",
+                "Layer": 1
+            }
+        ]
+
+    }
+}
