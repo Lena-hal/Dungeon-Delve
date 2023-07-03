@@ -2,13 +2,14 @@ import json
 import wall_class
 import gui
 import game_object
+import pygame
 
 # this manager is used to load levels interact with them
 class Level_manager:
     def __init__(self, game) -> None:
         self.game = game
         self.loaded_levels = {}
-        self.active_level = None
+        self.active_levels = []
 
     # loading a level into memory
     def load_level(self, level_path):
@@ -19,10 +20,14 @@ class Level_manager:
     def set_level(self, level_path):
         if level_path not in self.loaded_levels:
             self.load_level(level_path)
-        self.active_level = self.loaded_levels[level_path]
+        self.active_levels.append(self.loaded_levels[level_path])
+
+    def unset_level(self, level_path):
+        if level_path in self.loaded_levels:
+            self.active_levels.remove(self.loaded_levels[level_path])
 
 # class of any level
-class Level:
+class Level():
     def __init__(self, level_path, game) -> None:
         self.game = game
         self.game.level_manager.loaded_levels[level_path] = self
@@ -32,6 +37,14 @@ class Level:
         # loading level data
         with open("level_data/" + level_path, "r") as data:
             self.level_data = json.load(data)
+
+        # loading the level dimensions
+        self._x = self.level_data["Data"]["PosX"] * self.game.window_width
+        self._y = self.level_data["Data"]["PosY"] * self.game.window_width
+        self.width = self.level_data["Data"]["SizeX"] * self.game.window_width
+        self.height = self.level_data["Data"]["SizeY"] * self.game.window_height
+
+        self.screen = pygame.Surface((self.width, self.height))
 
         # loading background
         game_object.Object(texture=self.level_data["Data"]["Background"], level=level_path, game=self.game)
@@ -49,7 +62,9 @@ class Level:
             # loading different menus
             for i in self.level_data["Data"]["Menus"]:
                 if i == "MainMenu":
-                    loaded_gui_elements.append(gui.MainMenu(self.game))
+                    loaded_gui_elements.append(gui.MainMenu(self.game, level_path))
+                if i == "FPS":
+                    loaded_gui_elements.append(gui.FPS(self.game, level_path))
 
             # adding them to the list of objects and GUI's
             for i in loaded_gui_elements:
