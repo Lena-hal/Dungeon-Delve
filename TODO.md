@@ -18,5 +18,5 @@ The renderer should be able to do the following tasks:
 ## Shader Manager
 can change some property of every pixel on the screen
 
-## Debug mode
-add a way to show debug info on the screen (F3 menu)
+## Optimalization
+do a lot of rendering optimalizations because its getting laggy rn

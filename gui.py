@@ -166,3 +166,26 @@ class FPS(Menu):
     def tick(self):
         for i in self.elements:
             i.update_text(f"FPS: {self.game.__clock__.get_fps()//1}")
+
+class Debug(Menu):
+    def __init__(self, game, level) -> None:
+        super().__init__(game, level)
+        self.game.event_manager.add_tick_listener(self)
+        self.elements.append(GUI_text(game, level, "DEBBUGING MODE", 0, 0, align=(AligPos.Left, AligPos.Top)))
+
+    def tick(self):
+        loaded_levels = len(self.game.level_manager.loaded_levels)
+        loaded_textures = 0
+        for i in self.game.texture_manager.texture_data:
+            if self.game.texture_manager.texture_data[i]["pointer"] is not None:
+                loaded_textures += 1
+        textures = len(self.game.texture_manager.texture_data)
+
+        loaded_objects = 0
+        for i in self.game.level_manager.loaded_levels:
+            for j in self.game.level_manager.loaded_levels[i].loaded_objects:
+                for k in self.game.level_manager.loaded_levels[i].loaded_objects[j]:
+                    loaded_objects += 1
+
+        for i in self.elements:
+            i.update_text(f"DEBBUGING MODE!!! | {loaded_levels} - loaded levels | {loaded_textures}/{textures} - textures | {loaded_objects} - loaded objects |  FPS: {self.game.__clock__.get_fps()//1}", size=20, color=(255, 0, 0))

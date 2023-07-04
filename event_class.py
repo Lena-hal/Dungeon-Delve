@@ -28,5 +28,16 @@ class Event_manager:
                     j.interaction(event)
 
         key_pressed = pygame.key.get_pressed()
+
+        # activation of the debug mode
+        if key_pressed[pygame.K_F3]:
+            self.game.debug_mode = not self.game.debug_mode
+            if self.game.debug_mode:
+                self.game.level_manager.unset_level("fps.json")
+                self.game.level_manager.set_level("debug.json")
+            else:
+                self.game.level_manager.set_level("fps.json")
+                self.game.level_manager.unset_level("debug.json")
+
         for i in self.event_listeners:
             i.interaction(key=key_pressed, interaction_author=self.game.local_player)

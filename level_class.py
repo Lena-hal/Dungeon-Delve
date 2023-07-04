@@ -67,6 +67,8 @@ class Level():
                     loaded_gui_elements.append(gui.MainMenu(self.game, level_path))
                 if i == "FPS":
                     loaded_gui_elements.append(gui.FPS(self.game, level_path))
+                if i == "Debug":
+                    loaded_gui_elements.append(gui.Debug(self.game, level_path))
 
             # adding them to the list of objects and GUI's
             for i in loaded_gui_elements:

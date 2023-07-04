@@ -32,9 +32,7 @@ class game:
         # inicialization of the first level
         self.level_manager.set_level("GUI_mainMenu.json")
 
-        # this list contrains every object that listens to any events
-        self.trigger_list = []
-
+        self.debug_mode = False
         # this is the player that is currently in the game
         self.local_player = None
 

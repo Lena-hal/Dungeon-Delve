@@ -7,7 +7,6 @@ sqrt2 = math.sqrt(2)  # this is for optimalisation (many calculations prevented 
 class player(game_object.Object):
     def __init__(self, texture="default.png", level="level1.json", x=0, y=0, size_x=16, size_y=16, layer=0, game=None):
         super().__init__(texture, level, x, y, size_x, size_y, layer, game)
-        self.game.trigger_list.append(self)
         self.game.local_player = self
         self.speed = 300  # movement speed
         self.game.event_manager.add_event_listener(self)
