@@ -39,6 +39,7 @@ class Level():
             self.level_data = json.load(data)
 
         # loading the level dimensions
+        self.movable = self.level_data["Data"]["Movable"]
         self._x = self.level_data["Data"]["PosX"] * self.game.window_width
         self._y = self.level_data["Data"]["PosY"] * self.game.window_width
         self.width = self.level_data["Data"]["SizeX"] * self.game.window_width

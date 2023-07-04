@@ -3,17 +3,6 @@ import error_messages
 import enum
 import player_object
 
-# this manager has under control everything to do with GUIs - event processing TODO: replace this with a proper event system
-class GUI_manager:
-    def __init__(self, game) -> None:
-        self.game = game
-
-    # this is called for every Menu for every event
-    def process_events(self, event):
-        for i in self.game.level_manager.active_levels:
-            for j in i.gui_list:
-                j.interaction(event)
-
 # the main menu class that contains all the elements in the menu and manages them
 class Menu:
     def __init__(self, game, level) -> None:
@@ -166,13 +155,14 @@ class MainMenu(Menu):
                         self.game.level_manager.set_level("fps.json")
                         self.game.level_manager.unset_level("GUI_mainMenu.json")
 
-                        player_object.player(game=self.game, texture="player/default.png:{Relative_Scale:(4;4)}", size_x=64, size_y=64, layer=50)
+                        player_object.player(game=self.game, texture="player/default.png:{Relative_Scale:(3;3)}", size_x=48, size_y=48, layer=50, x=117, y=116)
 
 class FPS(Menu):
     def __init__(self, game, level) -> None:
         super().__init__(game, level)
+        self.game.event_manager.add_tick_listener(self)
         self.elements.append(GUI_text(game, level, f"FPS: {self.game.__clock__.get_fps()//1}", 0, 0, align=(AligPos.Left, AligPos.Top)))
 
-    def interaction(self, event):
+    def tick(self):
         for i in self.elements:
             i.update_text(f"FPS: {self.game.__clock__.get_fps()//1}")

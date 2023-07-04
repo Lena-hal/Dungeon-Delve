@@ -10,6 +10,7 @@
         "SizeY": 1,
         "PosX": 0,
         "PosY": 0,
+        "Movable": false,
         "Walls":[
             {
                 "X": 0,
