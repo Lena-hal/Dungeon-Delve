@@ -155,7 +155,7 @@ class MainMenu(Menu):
                         self.game.level_manager.set_level("fps.json")
                         self.game.level_manager.unset_level("GUI_mainMenu.json")
 
-                        player_object.player(game=self.game, texture="player/default.png:{Relative_Scale:(4;4)}", size_x=64, size_y=64, layer=50, x=self.game.window_width / 2, y=self.game.window_height / 2)
+                        player_object.player(game=self.game, texture="player/default.png:{Relative_Scale:(3;3)}", size_x=48, size_y=48, layer=50, x=117, y=116)
 
 class FPS(Menu):
     def __init__(self, game, level) -> None:

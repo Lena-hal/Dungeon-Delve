@@ -7,7 +7,7 @@ class Camera_mode(enum.Enum):
 
 class Camera_manager:
     def __init__(self, game) -> None:
-        self.mode = Camera_mode.dynamic
+        self.mode = Camera_mode.level
         self.game = game
         self.zoom = 1
         self._x = 0

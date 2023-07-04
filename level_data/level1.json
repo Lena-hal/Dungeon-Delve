@@ -12,6 +12,70 @@
         "Movable": true,
         "Walls": [
             {
+                "X": 132,
+                "Y": 100,
+                "Width": 16,
+                "Height": 16,
+                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+                "Layer": 1
+            },
+            {
+                "X": 132,
+                "Y": 132,
+                "Width": 16,
+                "Height": 16,
+                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+                "Layer": 1
+            },
+            {
+                "X": 132,
+                "Y": 164,
+                "Width": 16,
+                "Height": 16,
+                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+                "Layer": 1
+            },
+            {
+                "X": 132,
+                "Y": 196,
+                "Width": 16,
+                "Height": 16,
+                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+                "Layer": 1
+            },
+            {
+                "X": 164,
+                "Y": 100,
+                "Width": 16,
+                "Height": 16,
+                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+                "Layer": 1
+            },
+            {
+                "X": 164,
+                "Y": 132,
+                "Width": 16,
+                "Height": 16,
+                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+                "Layer": 1
+            },
+            {
+                "X": 164,
+                "Y": 164,
+                "Width": 16,
+                "Height": 16,
+                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+                "Layer": 1
+            },
+            {
+                "X": 164,
+                "Y": 196,
+                "Width": 16,
+                "Height": 16,
+                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+                "Layer": 1
+            },
+            {
                 "X": 100,
                 "Y": 100,
                 "Width": 16,
@@ -20,35 +84,59 @@
                 "Layer": 1
             },
             {
-                "X": 110,
-                "Y": 105,
-                "Width": 16,
-                "Height": 16,
-                "Texture": "walls/floor_1.png:{Relative_Scale:(4;4)}",
-                "Layer": 52
-            },
-            {
-                "X": 110,
-                "Y": 215,
-                "Width": 16,
-                "Height": 16,
-                "Texture": "walls/floor_1.png:{Relative_Scale:(4;4)}",
-                "Layer": 52
-            },
-            {
                 "X": 100,
-                "Y": 135,
+                "Y": 132,
                 "Width": 16,
                 "Height": 16,
-                "Texture": "walls/floor_1.png:{Relative_Scale:(2;9.4)}",
+                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
                 "Layer": 1
             },
             {
-                "X": 200,
+                "X": 100,
+                "Y": 164,
+                "Width": 16,
+                "Height": 16,
+                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+                "Layer": 1
+            },
+            {
+                "X": 100,
+                "Y": 196,
+                "Width": 16,
+                "Height": 16,
+                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+                "Layer": 1
+            },
+            {
+                "X": 100,
                 "Y": 100,
                 "Width": 16,
                 "Height": 16,
-                "Texture": "walls/floor_1.png:{Relative_Scale:(17.7;1),Rotate:(63.9)}",
+                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+                "Layer": 1
+            },
+            {
+                "X": 100,
+                "Y": 132,
+                "Width": 16,
+                "Height": 16,
+                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+                "Layer": 1
+            },
+            {
+                "X": 100,
+                "Y": 164,
+                "Width": 16,
+                "Height": 16,
+                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+                "Layer": 1
+            },
+            {
+                "X": 100,
+                "Y": 196,
+                "Width": 16,
+                "Height": 16,
+                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
                 "Layer": 1
             }
         ],
