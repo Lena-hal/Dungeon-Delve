@@ -4,7 +4,7 @@
     ],
     "Data": {
         "Background": "backgrounds/level0.png",
-        "BackgroundTransparent": true,
+        "BackgroundTransparent": false,
         "SizeX": 1,
         "SizeY": 1,
         "PosX": 0,

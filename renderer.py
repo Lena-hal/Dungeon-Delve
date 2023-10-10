@@ -7,7 +7,6 @@ class Render_manager:
     def __init__(self, game):
         self.game = game
 
-    # takes the active level and renders it TODO: add a ability to render multible levels at once
     def render(self):
         render_data = self.game.level_manager.active_levels
         if self.game.camera_manager.mode == camera_class.Camera_mode.dynamic or self.game.camera_manager.mode == camera_class.Camera_mode.level:
