@@ -20,3 +20,14 @@ can change some property of every pixel on the screen
 
 ## Optimalization
 do a lot of rendering optimalizations because its getting laggy rn
+
+# Level Editor Compiled Language
+create a "programming" langugage for creating levels:
+```
+> creates a group of textures named floor
+GROUP FLOOR: floor1.png, floor2.png, floor3.png...
+> creates a Grid of floor objects starting at X 100, Y 100 with 10x10 objects with spacing 20px, using the FLOOR group as a reference of textures
+GRID 100 100 10 10 20 FLOOR
+```
+and commands like these for the build logic
+after compilation this results into a .json file usable as a level
