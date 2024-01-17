@@ -1,146 +1,145 @@
 {
-    "Metadata": [
-        "TEMPLATE FOR MODIFIED TEXTURE: walls/floor_1.png:{Relative_Scale:(1.5;3.4),Rotate:(90)}"
-    ],
-    "Data": {
-        "Background": "backgrounds/level0.png",
-        "BackgroundTransparent": true,
-        "SizeX": 1,
-        "SizeY": 1,
-        "PosX": 0,
-        "PosY": 0,
-        "Movable": true,
-        "Walls": [
-            {
-                "X": 132,
-                "Y": 100,
-                "Width": 16,
-                "Height": 16,
-                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
-                "Layer": 1
-            },
-            {
-                "X": 132,
-                "Y": 132,
-                "Width": 16,
-                "Height": 16,
-                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
-                "Layer": 1
-            },
-            {
-                "X": 132,
-                "Y": 164,
-                "Width": 16,
-                "Height": 16,
-                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
-                "Layer": 1
-            },
-            {
-                "X": 132,
-                "Y": 196,
-                "Width": 16,
-                "Height": 16,
-                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
-                "Layer": 1
-            },
-            {
-                "X": 164,
-                "Y": 100,
-                "Width": 16,
-                "Height": 16,
-                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
-                "Layer": 1
-            },
-            {
-                "X": 164,
-                "Y": 132,
-                "Width": 16,
-                "Height": 16,
-                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
-                "Layer": 1
-            },
-            {
-                "X": 164,
-                "Y": 164,
-                "Width": 16,
-                "Height": 16,
-                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
-                "Layer": 1
-            },
-            {
-                "X": 164,
-                "Y": 196,
-                "Width": 16,
-                "Height": 16,
-                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
-                "Layer": 1
-            },
-            {
-                "X": 100,
-                "Y": 100,
-                "Width": 16,
-                "Height": 16,
-                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
-                "Layer": 1
-            },
-            {
-                "X": 100,
-                "Y": 132,
-                "Width": 16,
-                "Height": 16,
-                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
-                "Layer": 1
-            },
-            {
-                "X": 100,
-                "Y": 164,
-                "Width": 16,
-                "Height": 16,
-                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
-                "Layer": 1
-            },
-            {
-                "X": 100,
-                "Y": 196,
-                "Width": 16,
-                "Height": 16,
-                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
-                "Layer": 1
-            },
-            {
-                "X": 100,
-                "Y": 100,
-                "Width": 16,
-                "Height": 16,
-                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
-                "Layer": 1
-            },
-            {
-                "X": 100,
-                "Y": 132,
-                "Width": 16,
-                "Height": 16,
-                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
-                "Layer": 1
-            },
-            {
-                "X": 100,
-                "Y": 164,
-                "Width": 16,
-                "Height": 16,
-                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
-                "Layer": 1
-            },
-            {
-                "X": 100,
-                "Y": 196,
-                "Width": 16,
-                "Height": 16,
-                "Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
-                "Layer": 1
-            }
-        ],
-    "Menus": []
-
-    }
+	"Metadata": [
+		"TEMPLATE FOR MODIFIED TEXTURE: walls/floor_1.png:{Relative_Scale:(1.5;3.4),Rotate:(90)}"
+	],
+	"Data": {
+		"Background": "backgrounds/level0.png",
+		"BackgroundTransparent": true,
+		"SizeX": 1,
+		"SizeY": 1,
+		"PosX": 0,
+		"PosY": 0,
+		"Movable": true,
+		"Walls": [
+			{
+				"X": 132,
+				"Y": 100,
+				"Width": 16,
+				"Height": 16,
+				"Texture": "walls/floor_1.png:{Relative_Scale:(2;20)}",
+				"Layer": 1
+			},
+			{
+				"X": 132,
+				"Y": 132,
+				"Width": 16,
+				"Height": 16,
+				"Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+				"Layer": 1
+			},
+			{
+				"X": 132,
+				"Y": 164,
+				"Width": 16,
+				"Height": 16,
+				"Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+				"Layer": 1
+			},
+			{
+				"X": 132,
+				"Y": 196,
+				"Width": 16,
+				"Height": 16,
+				"Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+				"Layer": 1
+			},
+			{
+				"X": 164,
+				"Y": 100,
+				"Width": 16,
+				"Height": 16,
+				"Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+				"Layer": 1
+			},
+			{
+				"X": 164,
+				"Y": 132,
+				"Width": 16,
+				"Height": 16,
+				"Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+				"Layer": 1
+			},
+			{
+				"X": 164,
+				"Y": 164,
+				"Width": 16,
+				"Height": 16,
+				"Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+				"Layer": 1
+			},
+			{
+				"X": 164,
+				"Y": 196,
+				"Width": 16,
+				"Height": 16,
+				"Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+				"Layer": 1
+			},
+			{
+				"X": 100,
+				"Y": 100,
+				"Width": 16,
+				"Height": 16,
+				"Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+				"Layer": 1
+			},
+			{
+				"X": 100,
+				"Y": 132,
+				"Width": 16,
+				"Height": 16,
+				"Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+				"Layer": 1
+			},
+			{
+				"X": 100,
+				"Y": 164,
+				"Width": 16,
+				"Height": 16,
+				"Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+				"Layer": 1
+			},
+			{
+				"X": 100,
+				"Y": 196,
+				"Width": 16,
+				"Height": 16,
+				"Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+				"Layer": 1
+			},
+			{
+				"X": 100,
+				"Y": 100,
+				"Width": 16,
+				"Height": 16,
+				"Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+				"Layer": 1
+			},
+			{
+				"X": 100,
+				"Y": 132,
+				"Width": 16,
+				"Height": 16,
+				"Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+				"Layer": 1
+			},
+			{
+				"X": 100,
+				"Y": 164,
+				"Width": 16,
+				"Height": 16,
+				"Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+				"Layer": 1
+			},
+			{
+				"X": 100,
+				"Y": 196,
+				"Width": 16,
+				"Height": 16,
+				"Texture": "walls/floor_1.png:{Relative_Scale:(2;2)}",
+				"Layer": 1
+			}
+		],
+		"Menus": []
+	}
 }
