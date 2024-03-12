@@ -7,7 +7,6 @@ class Render_manager:
     def __init__(self, game):
         self.game = game
 
-    #this function renders the game
     # takes the active level and renders it TODO: add a ability to render multible levels at once
     def render(self):
         render_data = self.game.level_manager.active_levels
